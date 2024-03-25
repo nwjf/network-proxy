@@ -1,19 +1,12 @@
 const { createProxyMiddleware, responseInterceptor } = require("http-proxy-middleware");
 
 module.exports = (req, res) => {
-  const version = '2.0.1';
+  const version = '2.0.2';
   console.log('version: ' + version);
   const host = req.headers.host; 
   const cookies = req.cookies;
-  console.log('host', host);
-  // const { username, password } = cookies;
-  // if (username !== 'admin' && password !== '9000') {
-  //   res.redirect(301, '/next/login?type=logout'); 
-  //   return;
-  // }
-  // console.log('===');
 
-  // let target = 'https://www.google.com/';
+
   let target = 'www.junfa.wang';
   if (host === 'gs.junfa.wang') {
     target = 'https://www.google.com/';
@@ -22,6 +15,9 @@ module.exports = (req, res) => {
   } else if (host === 'hub.junfa.wang') {
     target = 'https://www.github.com';
   }
+
+  console.log(host);
+  console.log(target);
   // // 创建代理对象并转发请求
   createProxyMiddleware({
     target,
