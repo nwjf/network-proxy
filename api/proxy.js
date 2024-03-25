@@ -25,11 +25,12 @@ module.exports = (req, res) => {
     pathRewrite: {},
     selfHandleResponse: true,
     onProxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
-      const response = responseBuffer.toString('utf8') + `<!-- proxy version ${version} -->`; // convert buffer to string
+      const response = responseBuffer.toString('utf8'); // convert buffer to string
       return response
         .replace(/https:\/\/www\.youtube\.com/gi, 'https://ytb.junfa.wang')
         .replace(/https:\/\/www\.google\.com/gi, 'https://gs.junfa.wang')
         .replace(/https:\/\/www\.github\.com/gi, 'https://hub.junfa.wang')
+        .replace(/<\/html>/gi, `<!-- proxy version: ${version} --> </html>`)
     }),
   })(req, res);
 };
