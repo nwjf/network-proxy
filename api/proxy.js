@@ -38,7 +38,7 @@ module.exports = (req, res) => {
     },
     selfHandleResponse: true,
     onProxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
-      const response = responseBuffer.toString('utf8'); // convert buffer to string
+      const response = responseBuffer.toString('utf8') + '<!-- proxy version 1.0 -->'; // convert buffer to string
       return response
         .replace(/https:\/\/www\.youtube\.com/gi, 'https://ytb.junfa.wang')
     }),
