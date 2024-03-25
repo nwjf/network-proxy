@@ -1,13 +1,13 @@
 const { createProxyMiddleware, responseInterceptor } = require("http-proxy-middleware");
 
 module.exports = (req, res) => {
-  const version = '2.0.3';
+  const version = '2.0.4';
   console.log('version: ' + version);
   const host = req.headers.host; 
   const cookies = req.cookies;
 
 
-  let target = 'www.baidu.com';
+  let target = 'www.junfa.wang';
   if (host === 'gs.junfa.wang') {
     target = 'https://www.google.com/';
   } else if (host === 'ytb.junfa.wang') {
@@ -18,7 +18,7 @@ module.exports = (req, res) => {
 
   console.log(host);
   console.log(target);
-  // // 创建代理对象并转发请求
+  // 创建代理对象并转发请求
   createProxyMiddleware({
     target,
     changeOrigin: true,
