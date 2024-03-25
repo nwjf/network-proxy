@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!next).)*",
+      "source": "/(.*)",
       "destination": "/api/proxy"
     }
   ]
