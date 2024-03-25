@@ -24,8 +24,8 @@ module.exports = (req, res) => {
   // }
   // console.log('===');
 
-  let target = 'https://www.google.com/';
-  // let target = 'https://www.baidu.com/';
+  // let target = 'https://www.google.com/';
+  let target = 'https://www.baidu.com/';
   // let target = 'https://www.youtube.com/';
   // // 创建代理对象并转发请求
   createProxyMiddleware({
