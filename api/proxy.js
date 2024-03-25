@@ -1,6 +1,8 @@
 const { createProxyMiddleware, responseInterceptor } = require("http-proxy-middleware");
 
 module.exports = (req, res) => {
+  const version = '1.0.2';
+  console.log('version: ' + version);
   // res.status(200).json({ name: 'Yongwang' })
   // console.log('===');
   // let target = "https://www.google.com";
@@ -38,7 +40,7 @@ module.exports = (req, res) => {
     },
     selfHandleResponse: true,
     onProxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
-      const response = responseBuffer.toString('utf8') + '<!-- proxy version 1.0 -->'; // convert buffer to string
+      const response = responseBuffer.toString('utf8') + `<!-- proxy version ${version} -->`; // convert buffer to string
       return response
         .replace(/https:\/\/www\.youtube\.com/gi, 'https://ytb.junfa.wang')
     }),
