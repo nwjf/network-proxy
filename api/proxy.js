@@ -41,6 +41,7 @@ module.exports = (req, res) => {
       const response = responseBuffer.toString('utf8'); // convert buffer to string
       return response
         .replace('https://www.youtube.com', 'https://ytb.junfa.wang')
+        .replace('https:\/\/www\.youtube\.com', 'https://ytb.junfa.wang')
     }),
   })(req, res);
 };
